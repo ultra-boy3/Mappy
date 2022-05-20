@@ -156,6 +156,23 @@ class TiledPlatform extends Phaser.Scene {
             obj2.destroy(); // remove power up
         })
 
+        this.powerUpAnim = this.anims.create({
+            key: 'blueDiamond',
+            defaultTextureKey: 'kenney_sheet',
+            frames: [ 
+                { frame: 513 },
+                { frame: 215 }
+            ],
+            frameRate: 2,
+            repeat: -1
+        })
+
+        for(let i = 0; i < this.bluePowerUpGroup.getChildren().length; i++){
+            let powerup = this.bluePowerUpGroup.getChildren()[i];
+            console.log(powerup);
+            powerup.anims.play('blueDiamond');
+        }
+
         // setup camera
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.p1, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
